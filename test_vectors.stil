@@ -1,0 +1,128 @@
+STIL 1.0 { Design 2005; }
+Header {
+   Title "  TetraMAX (TM)  I-2013.12-i131119_202652 STIL output";
+   Date "Wed Feb  5 16:07:20 2014";
+   History {
+      Ann {*     Uncollapsed Stuck Fault Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* fault class                     code   #faults *}
+      Ann {* ------------------------------  ----  --------- *}
+      Ann {* Detected                         DT       1085 *}
+      Ann {* Possibly detected                PT          0 *}
+      Ann {* Undetectable                     UD          1 *}
+      Ann {* ATPG untestable                  AU          0 *}
+      Ann {* Not detected                     ND         28 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* total faults                              1114 *}
+      Ann {* test coverage                            97.48% *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {*            Pattern Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* #internal patterns                          84 *}
+      Ann {*     #basic_scan patterns                    84 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {* There are no rule fails *}
+      Ann {* There are no clocks *}
+      Ann {* There are no constraint ports *}
+      Ann {* There are no equivalent pins *}
+      Ann {* There are no net connections *}
+      Ann {* Unified STIL Flow *}
+      Ann {* min_n_shifts = 1 *}
+      Ann {* serial_flag = 0 *}
+   }
+}
+Signals {
+   "N1" In; "N2" In; "N3" In; "N4" In; "N5" In; "N6" In; "N7" In; "N8" In; "N9" In;
+   "N10" In; "N11" In; "N12" In; "N13" In; "N14" In; "N15" In; "N16" In; "N17" In;
+   "N18" In; "N19" In; "N20" In; "N21" In; "N22" In; "N23" In; "N24" In; "N25" In;
+   "N26" In; "N27" In; "N28" In; "N29" In; "N30" In; "N31" In; "N32" In; "N33" In;
+   "N34" In; "N35" In; "N36" In; "N500" Out; "N501" Out; "N502" Out; "N503" Out; "N504" Out;
+   "N505" Out; "N506" Out;
+}
+SignalGroups {
+   "_default_In_Timing_" = '"N1" + "N2" + "N3" + "N4" + "N5" + "N6" + "N7" +
+   "N8" + "N9" + "N10" + "N11" + "N12" + "N13" + "N14" + "N15" + "N16" + "N17" +
+   "N18" + "N19" + "N20" + "N21" + "N22" + "N23" + "N24" + "N25" + "N26" + "N27" +
+   "N28" + "N29" + "N30" + "N31" + "N32" + "N33" + "N34" + "N35" + "N36"'; // #signals=36
+   "_pi" = '"N1" + "N2" + "N3" + "N4" + "N5" + "N6" + "N7" + "N8" + "N9" + "N10" +
+   "N11" + "N12" + "N13" + "N14" + "N15" + "N16" + "N17" + "N18" + "N19" + "N20" +
+   "N21" + "N22" + "N23" + "N24" + "N25" + "N26" + "N27" + "N28" + "N29" + "N30" +
+   "N31" + "N32" + "N33" + "N34" + "N35" + "N36"'; // #signals=36
+   "_in" = '"N1" + "N2" + "N3" + "N4" + "N5" + "N6" + "N7" + "N8" + "N9" + "N10" +
+   "N11" + "N12" + "N13" + "N14" + "N15" + "N16" + "N17" + "N18" + "N19" + "N20" +
+   "N21" + "N22" + "N23" + "N24" + "N25" + "N26" + "N27" + "N28" + "N29" + "N30" +
+   "N31" + "N32" + "N33" + "N34" + "N35" + "N36"'; // #signals=36
+   "_default_Out_Timing_" = '"N500" + "N501" + "N502" + "N503" + "N504" + "N505" +
+   "N506"'; // #signals=7
+   "_po" = '"N500" + "N501" + "N502" + "N503" + "N504" + "N505" + "N506"'; // #signals=7
+   "_out" = '"N500" + "N501" + "N502" + "N503" + "N504" + "N505" + "N506"'; // #signals=7
+}
+Timing {
+   WaveformTable "_default_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "_default_In_Timing_" { 0 { '0ns' D; } }
+         "_default_In_Timing_" { 1 { '0ns' U; } }
+         "_default_In_Timing_" { Z { '0ns' Z; } }
+         "_default_In_Timing_" { N { '0ns' N; } }
+         "_default_Out_Timing_" { X { '0ns' X; } }
+         "_default_Out_Timing_" { H { '0ns' X; '40ns' H; } }
+         "_default_Out_Timing_" { T { '0ns' X; '40ns' T; } }
+         "_default_Out_Timing_" { L { '0ns' X; '40ns' L; } }
+      }
+   }
+}
+ScanStructures {
+   // Uncomment and modify the following to suit your design
+   // ScanChain "chain_name" { ScanIn "chain_input_name"; ScanOut "chain_output_name"; }
+}
+PatternBurst "_burst_" {
+   PatList { "_pattern_" {
+   }
+}}
+PatternExec {
+   PatternBurst "_burst_";
+}
+Procedures {
+   "capture" {
+      W "_default_WFT_";
+      C { "_po"=\r7 X ; }
+      "forcePI": V { "_pi"=\r36 # ; }
+      "measurePO": V { "_po"=\r7 # ; }
+   }
+   // Uncomment and modify the following to suit your design
+   // load_unload {
+      // V { } // force clocks off and scan enable pins active
+      // Shift { V { _si=#; _so=#; }} // pulse shift clocks
+   // }
+}
+MacroDefs {
+}
+Pattern "_pattern_" {
+   W "_default_WFT_";
+   "precondition all Signals": C { "_pi"=\r36 0 ; "_po"=\r7 X ; }
+   "pattern 0": Call "capture" { 
+      "_pi"=001000001011101100111000001001000111; "_po"=XXXXXXX; }
+   "pattern 1": Call "capture" { 
+      "_pi"=001111000011100100011010110010100101; "_po"=XXXXXXX; }
+   "pattern 2": Call "capture" { 
+      "_pi"=100100010011110000100001101100111000; "_po"=XXXXXXX; }
+   "pattern 3": Call "capture" { 
+      "_pi"=100010000000001110101011000010111000; "_po"=XXXXXXX; }
+   "pattern 4": Call "capture" { 
+      "_pi"=011010101111100110101010001011111101; "_po"=XXXXXXX; }
+   "pattern 5": Call "capture" { 
+      "_pi"=011010111110111010111111001100100011; "_po"=XXXXXXX; }
+   "pattern 6": Call "capture" { 
+      "_pi"=011111101111101011111101111110101010; "_po"=XXXXXXX; }
+   "pattern 7": Call "capture" { 
+      "_pi"=011110101111101010111011111111100001; "_po"=XXXXXXX; }
+   "pattern 8": Call "capture" { 
+      "_pi"=111010101111111010100010111111010011; "_po"=XXXXXXX; }
+   "pattern 9": Call "capture" { 
+      "_pi"=011110101110101010111111101011111100; "_po"=XXXXXXX; }
+}
+
+// Patterns reference 168 V statements, generating 168 test cycles
